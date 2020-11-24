@@ -1,0 +1,14 @@
+stage:
+  spec:
+    destination:
+        server: https://kubernetes.default.svc
+    source:
+        repourl: https://csedevops@dev.azure.com/csedevops/GitOps/_git/azure-vote-app-deployment  
+
+prod:
+  spec:
+    destination:
+        server: https://gitopsaks-prod-dns-f1b65f5a.hcp.westus.azmk8s.io:443
+    source:
+        repourl: https://csedevops@dev.azure.com/csedevops/GitOps/_git/azure-vote-app-deployment  
+
