@@ -5,10 +5,10 @@ kind: ConfigMap
 metadata:
   name: gitops-connector-cm
 data:
-  GITOPS_APP_URL: bnb
-  AZDO_GITOPS_REPO_NAME: test123456789999
-  AZDO_PR_REPO_NAME: sda
-  AZDO_ORG_URL: asdasdass
+  GITOPS_APP_URL: 
+  AZDO_GITOPS_REPO_NAME: test
+  AZDO_PR_REPO_NAME: 
+  AZDO_ORG_URL:
 ---
 # Source: gitops-connector/templates/deployment.yaml
 apiVersion: apps/v1
@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:0.1.36
+        image: kaizentm/gitops-connector:0.1.38
         env:
         - name: GITOPS_APP_URL
           valueFrom:
