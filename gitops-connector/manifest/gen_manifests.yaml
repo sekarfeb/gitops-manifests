@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:0.1.36
+        image: kaizentm/gitops-connector:0.1.39
         env:
         - name: GITOPS_APP_URL
           valueFrom:

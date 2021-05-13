@@ -1,5 +1,5 @@
 imageName: kaizentm/gitops-connector
-imageTag: 0.1.36
+imageTag: 0.1.39
 containerPort: 8080
 
 gitOpsAppURL: 
