@@ -6,7 +6,7 @@ metadata:
   name: gitops-connector-cm
 data:
   GITOPS_APP_URL: bnb
-  AZDO_GITOPS_REPO_NAME: test12345
+  AZDO_GITOPS_REPO_NAME: test1234534234
   AZDO_PR_REPO_NAME: sda
   AZDO_ORG_URL: asdasdass
 ---
