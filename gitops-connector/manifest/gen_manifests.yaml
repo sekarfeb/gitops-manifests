@@ -13,6 +13,18 @@ data:
   GITHUB_GITOPS_MANIFEST_REPO_NAME: gitops-manifests
   GITHUB_ORG_URL: https://api.github.com/repos/kaizentm
 ---
+# Source: gitops-connector/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitops-connector
+spec:
+  selector:
+    app: gitops-connector   
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
 # Source: gitops-connector/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -32,7 +44,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:0.1.47
+        image: kaizentm/gitops-connector:0.1.49
         env:
         - name: GIT_REPOSITORY_TYPE
           valueFrom:
