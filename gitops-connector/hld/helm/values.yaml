@@ -1,10 +1,16 @@
 imageName: kaizentm/gitops-connector
-imageTag: 0.1.38
+imageTag: 0.1.45
 containerPort: 8080
 
-gitOpsAppURL: 
+gitRepositoryType: GITHUB
+ciCdOrchestratorType: GITHUB
+gitOpsOperatorType: FLUX
+gitOpsAppURL: https://github.com/kaizentm/gitops-manifests/commit
 azdoGitOpsRepoName: test
 azdoPrRepoName: 
 azdoOrgUrl: 
 orchestratorPAT: 
 
+gitHubGitOpsRepoName: gitops-connector
+gitHubGitOpsManifestsRepoName: gitops-manifests
+gitHubOrgUrl: https://api.github.com/repos/kaizentm
