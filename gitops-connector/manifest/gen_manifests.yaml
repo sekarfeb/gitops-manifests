@@ -1,11 +1,17 @@
 ---
-# Source: gitops-connector/templates/configMap.yaml hjhkj
+# Source: gitops-connector/templates/configMap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gitops-connector-cm
 data:
-  AZDO_GITOPS_REPO_NAME: test
+  GIT_REPOSITORY_TYPE: GITHUB
+  CICD_ORCHESTRATOR_TYPE: GITHUB
+  GITOPS_OPERATOR_TYPE: FLUX
+  GITOPS_APP_URL: https://github.com/kaizentm/gitops-manifests/commit
+  GITHUB_GITOPS_REPO_NAME: gitops-connector
+  GITHUB_GITOPS_MANIFEST_REPO_NAME: gitops-manifests
+  GITHUB_ORG_URL: https://api.github.com/repos/kaizentm
 ---
 # Source: gitops-connector/templates/deployment.yaml
 apiVersion: apps/v1
@@ -26,28 +32,43 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:0.1.38
+        image: kaizentm/gitops-connector:0.1.45
         env:
+        - name: GIT_REPOSITORY_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GIT_REPOSITORY_TYPE
+        - name: CICD_ORCHESTRATOR_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: CICD_ORCHESTRATOR_TYPE              
+        - name: GITOPS_OPERATOR_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GITOPS_OPERATOR_TYPE
         - name: GITOPS_APP_URL
           valueFrom:
             configMapKeyRef:
               name: gitops-connector-cm
-              key: GITOPS_APP_URL
-        - name: AZDO_GITOPS_REPO_NAME
+              key: GITOPS_APP_URL              
+        - name: GITHUB_GITOPS_REPO_NAME
           valueFrom:
             configMapKeyRef:
               name: gitops-connector-cm
-              key: AZDO_GITOPS_REPO_NAME
-        - name: AZDO_PR_REPO_NAME
+              key: GITHUB_GITOPS_REPO_NAME
+        - name: GITHUB_GITOPS_MANIFEST_REPO_NAME
           valueFrom:
             configMapKeyRef:
               name: gitops-connector-cm
-              key: AZDO_PR_REPO_NAME
-        - name: AZDO_ORG_URL
+              key: GITHUB_GITOPS_MANIFEST_REPO_NAME
+        - name: GITHUB_ORG_URL
           valueFrom:
             configMapKeyRef:
               name: gitops-connector-cm
-              key: AZDO_ORG_URL
+              key: GITHUB_ORG_URL                                                    
         - name: PAT
           valueFrom:
             secretKeyRef:
