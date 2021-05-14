@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:0.1.45
+        image: kaizentm/gitops-connector:0.1.46
         env:
         - name: GIT_REPOSITORY_TYPE
           valueFrom:
