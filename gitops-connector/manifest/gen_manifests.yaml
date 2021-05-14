@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:0.1.51
+        image: kaizentm/gitops-connector:0.1.60
         env:
         - name: GIT_REPOSITORY_TYPE
           valueFrom:
