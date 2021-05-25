@@ -1,5 +1,5 @@
 imageName: kaizentm/gitops-connector
-imageTag: 1.0.0-62
+imageTag: 1.0.0-71
 containerPort: 8080
 
 gitRepositoryType: GITHUB
