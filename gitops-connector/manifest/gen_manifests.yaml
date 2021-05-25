@@ -1,5 +1,5 @@
 ---
-# Source: gitops-connector/templates/configMap.yaml
+# Source: gitops-connector/templates/deployment.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:1.0.0-62
+        image: kaizentm/gitops-connector:1.0.0-71
         env:
         - name: GIT_REPOSITORY_TYPE
           valueFrom:
