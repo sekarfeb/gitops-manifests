@@ -33,6 +33,7 @@ metadata:
   name: gitops-connector  
   labels:
     app: gitops-connector
+    newlabel: newlabel
 spec:
   replicas: 1
   selector:
