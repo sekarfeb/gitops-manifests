@@ -1,5 +1,4 @@
 ---
----
 # Source: gitops-connector/templates/deployment.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -33,7 +32,6 @@ metadata:
   name: gitops-connector  
   labels:
     app: gitops-connector
-    newlabel: newlabel
 spec:
   replicas: 1
   selector:
@@ -46,7 +44,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: kaizentm/gitops-connector:1.0.0-75
+        image: kaizentm/gitops-connector:1.0.0-76
         env:
         - name: GIT_REPOSITORY_TYPE
           valueFrom:
