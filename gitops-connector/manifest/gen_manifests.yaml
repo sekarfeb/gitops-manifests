@@ -1,4 +1,5 @@
 ---
+---
 # Source: gitops-connector/templates/deployment.yaml
 apiVersion: v1
 kind: ConfigMap
