@@ -1,0 +1,92 @@
+---
+# Source: gitops-connector/templates/deployment.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitops-connector-cm
+data:
+  GIT_REPOSITORY_TYPE: GITHUB
+  CICD_ORCHESTRATOR_TYPE: GITHUB
+  GITOPS_OPERATOR_TYPE: FLUX
+  GITOPS_APP_URL: https://github.com/kaizentm/gitops-manifests/commit
+  GITHUB_GITOPS_REPO_NAME: gitops-connector
+  GITHUB_GITOPS_MANIFEST_REPO_NAME: gitops-manifests
+  GITHUB_ORG_URL: https://api.github.com/repos/kaizentm
+---
+# Source: gitops-connector/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitops-connector
+spec:
+  selector:
+    app: gitops-connector   
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+# Source: gitops-connector/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-connector  
+  labels:
+    app: gitops-connector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitops-connector
+  template:
+    metadata:
+      labels:
+        app: gitops-connector
+    spec:
+      containers:
+      - name: connector
+        image: ghcr.io/azure/gitops-connector:1.0.1-102
+        env:
+        - name: GIT_REPOSITORY_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GIT_REPOSITORY_TYPE
+        - name: CICD_ORCHESTRATOR_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: CICD_ORCHESTRATOR_TYPE              
+        - name: GITOPS_OPERATOR_TYPE
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GITOPS_OPERATOR_TYPE
+        - name: GITOPS_APP_URL
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GITOPS_APP_URL              
+        - name: GITHUB_GITOPS_REPO_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GITHUB_GITOPS_REPO_NAME
+        - name: GITHUB_GITOPS_MANIFEST_REPO_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GITHUB_GITOPS_MANIFEST_REPO_NAME
+        - name: GITHUB_ORG_URL
+          valueFrom:
+            configMapKeyRef:
+              name: gitops-connector-cm
+              key: GITHUB_ORG_URL                                                    
+        - name: PAT
+          valueFrom:
+            secretKeyRef:
+              name: gitops-connector-secret
+              key: PAT
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
