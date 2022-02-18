@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: ghcr.io/azure/gitops-connector:1.0.1-113
+        image: ghcr.io/azure/gitops-connector:1.0.1-115
         env:
         - name: GIT_REPOSITORY_TYPE
           valueFrom:
