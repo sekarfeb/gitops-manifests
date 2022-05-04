@@ -1,0 +1,43 @@
+---
+# Source: rancher-hello-world/templates/namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaizen-rancher-hello-world-development
+---
+# Source: rancher-hello-world/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-hello-world-service
+  namespace: kaizen-rancher-hello-world-development
+spec:
+  selector:
+    app: rancher-hello-world
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+# Source: rancher-hello-world/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-hello-world-deployment
+  namespace: kaizen-rancher-hello-world-development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rancher-hello-world
+  template:
+    metadata:
+      labels:
+        app: rancher-hello-world      
+    spec:
+      containers:
+      - name: rancher-hello-world
+        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-29
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
