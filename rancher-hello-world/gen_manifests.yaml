@@ -25,7 +25,11 @@ kind: Deployment
 metadata:
   name: rancher-hello-world-deployment
   namespace: kaizen-rancher-hello-world-development
+  annotations:
+    version: 0.0.1-55
 spec:
+  strategy: 
+    type: Recreate      
   replicas: 1
   selector:
     matchLabels:
@@ -34,10 +38,12 @@ spec:
     metadata:
       labels:
         app: rancher-hello-world      
+      annotations:
+        version: 0.0.1-55
     spec:
       containers:
       - name: rancher-hello-world
-        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-33
+        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-55
         imagePullPolicy: Always
         ports:
         - containerPort: 80
