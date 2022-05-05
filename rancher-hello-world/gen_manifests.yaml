@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rancher-hello-world-deployment
-  namespace: kaizen-simple-java-demo-production
+  namespace: kaizen-rancher-hello-world-production
 spec:
   replicas: 1
   selector:
