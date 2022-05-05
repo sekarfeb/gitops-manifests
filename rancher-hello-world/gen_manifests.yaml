@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: rancher-hello-world
-        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-33
+        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-39
         imagePullPolicy: Always
         ports:
         - containerPort: 80
