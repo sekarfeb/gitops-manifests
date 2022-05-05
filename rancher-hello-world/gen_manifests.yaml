@@ -37,7 +37,13 @@ spec:
     spec:
       containers:
       - name: rancher-hello-world
-        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-33
+        image: ghcr.io/eedorenko/rancher-hello-world:0.0.1-34
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+---
+# Source: rancher-hello-world/templates/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - gen_manifests.yaml
