@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: rancher-hello-world
-        image: 127.0.0.1:31999/eedorenko/rancher-hello-world:0.0.1-33
+        image: 127.0.0.1:31999/eedorenko/rancher-hello-world:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
