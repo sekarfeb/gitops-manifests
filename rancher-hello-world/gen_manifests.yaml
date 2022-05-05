@@ -26,8 +26,10 @@ metadata:
   name: rancher-hello-world-deployment
   namespace: kaizen-rancher-hello-world-production
   annotations:
-    version: 0.0.1-41
+    version: 0.0.1-42
 spec:
+  strategy: 
+    type: Recreate      
   replicas: 1
   selector:
     matchLabels:
@@ -36,6 +38,8 @@ spec:
     metadata:
       labels:
         app: rancher-hello-world      
+      annotations:
+        version: 0.0.1-42
     spec:
       containers:
       - name: rancher-hello-world
