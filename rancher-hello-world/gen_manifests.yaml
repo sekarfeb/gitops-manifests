@@ -25,6 +25,8 @@ kind: Deployment
 metadata:
   name: rancher-hello-world-deployment
   namespace: kaizen-rancher-hello-world-production
+  annotations:
+    version: 0.0.1-40
 spec:
   replicas: 1
   selector:
