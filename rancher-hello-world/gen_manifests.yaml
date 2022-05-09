@@ -3,14 +3,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kaizen-rancher-hello-world-production
+  name: coral-applications-rancher-hello-world-production
 ---
 # Source: rancher-hello-world/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: rancher-hello-world-service
-  namespace: kaizen-rancher-hello-world-production
+  namespace: coral-applications-rancher-hello-world-production
 spec:
   selector:
     app: rancher-hello-world
@@ -24,9 +24,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rancher-hello-world-deployment
-  namespace: kaizen-rancher-hello-world-production
+  namespace: coral-applications-rancher-hello-world-production
   annotations:
-    version: 0.0.1-96
+    version: 0.0.1-97
 spec:
   strategy: 
     type: Recreate      
@@ -39,7 +39,7 @@ spec:
       labels:
         app: rancher-hello-world      
       annotations:
-        version: 0.0.1-96
+        version: 0.0.1-97
     spec:
       containers:
       - name: rancher-hello-world
