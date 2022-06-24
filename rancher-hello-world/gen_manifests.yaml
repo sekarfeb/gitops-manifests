@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: coral-applications-rancher-hello-world-development
+  name: kaizen-hello-world-development
 ---
 # Source: rancher-hello-world/templates/service.yaml
 apiVersion: v1
@@ -16,7 +16,7 @@ spec:
     app: rancher-hello-world
   ports:
     - protocol: TCP
-      port: 80
+      port: ${SERVICE_PORT}
       targetPort: 80
 ---
 # Source: rancher-hello-world/templates/deployment.yaml
