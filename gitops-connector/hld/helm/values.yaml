@@ -1,5 +1,5 @@
 imageName: ghcr.io/azure/gitops-connector
-imageTag: 1.0.1-113
+imageTag: 1.1.0-117
 containerPort: 8080
 
 gitRepositoryType: GITHUB
@@ -26,3 +26,7 @@ gitHubOrgUrl: https://api.github.com/repos/kaizentm
 #     operator: Equal
 #     value: spot
 #     effect: NoSchedule
+
+# Optional node selector rules
+# nodeSelector:
+#   kubernetes.io/os: linux
